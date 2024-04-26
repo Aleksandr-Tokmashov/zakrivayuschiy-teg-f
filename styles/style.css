@@ -13,8 +13,524 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 
 */
+@keyframes theme-menu__button-disabled {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(-4px);
+  }
+}
 
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font), sans-serif;
+  font-variation-settings: 'wght' var(--text-weight);
+  background-color: var(--background-color);
+  color: var(--accent-color);
+  background-image: var(--background-gradient);
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  font-size: 18px;
+  text-align: left;
+  line-height: 21px;
+  margin: 100px 0;
+}
+
+.content-section {
+  inline-size: clamp(375px, calc(50% - 40px), 100%);
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 2px solid var(--accent-color);
+  background-color: var(--background-color);
+}
+
+.header {
+  font-family: var(--accent-font), sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block-end: 25px;
+  padding-block-start: 135px;
+  text-align: left;
+  font-weight: 400;
+}
+
+.logo {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);;
+  line-height: 65px;
+}
+
+.title {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  line-height: 23px;
+  margin: 20px auto 25px;
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.theme-menu__button {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: inherit;
+  line-height: 14px;
+  text-align: inherit;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  inset: 0;
+}
+
+.theme-menu__button:enabled {
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.theme-menu__button:disabled {
+  opacity: 60%;
+  pointer-events: none;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.theme-menu__button:disabled::before {
+  content: '▶';
+  position: absolute;
+  left: -11px;
+  top: 0;
+  animation-name: theme-menu__button-disabled;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+.theme-menu__button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.theme-menu__button:focus {
+  outline: none; 
+  opacity: 0.6;
+}
+
+.theme-menu__button::after {
+  position: absolute;
+  left: 5px;
+  bottom: -3px;
+  content: '';
+  inline-size: calc(100% - 11px);
+  border-block-end: 2px solid var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
+  transition: transform 0.3s ease;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.section__title {
+  font-variation-settings: 'wght' var(--title-weight);
+  line-height: 21.78px;
+  font-size: inherit;
+  margin: 3px 10px;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  position: relative;
+  inset: 0;
+}
+
+.pic-with-label {
+  position: relative;
+  inset: 0;
+}
+
+.pic-label {
+  font-family: var(--accent-font), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  text-align: left;
+  position: absolute;
+  inset-block-start: 27px;
+  inset-inline-end: 25px;
+  mix-blend-mode: hard-light;
+  opacity: 50%;
+  text-shadow:
+  -1px 0 var(--background-color), 
+  0 1px var(--background-color), 
+  1px 0 var(--background-color), 
+  0 -1px var(--background-color);
+}
+
+@supports((text-stroke: 1px var(--background-color)) or (-webkit-text-stroke: 1px var(--background-color))) {
+  .pic-label {
+      -webkit-text-stroke: 1px var(--background-color);
+      text-stroke: 1px var(--background-color);
+      text-shadow: none;
+  }
+}
+
+.section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 25px;
+}
+
+.section__content-description {
+  margin-block-start: 2px;
+  text-align: left;
+}
+
+.section__button {
+  background-color:  transparent;
+  block-size: 38px;
+  inline-size: 130px;
+  border: 2px solid var(--accent-color);
+}
+
+.buttons {
+  align-self: end;
+  display: flex;
+  align-items: center;
+}
+
+.like-button {
+  padding: 0;
+  margin-inline-end: 2px;
+  border: 2px solid transparent;
+  block-size: 38px;
+  inline-size: 39px;
+  background-color: transparent;
+  transition: border 0.3s ease;
+}
+
+.like-button:focus {
+  outline: none;
+}
+
+.like-button:focus-visible {
+  border-color: var(--accent-color);
+  transition: border 0.3s ease;
+}
+
+.like-icon {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.like-icon:hover {
+  cursor: pointer;
+}
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s 0.03s; 
+}
+
+.like-button:hover .core{
+  fill: var(--accent-color);
+  transition: fill 0.3s; 
+}
+
+.main-body{
+  fill: transparent;
+  transition: fill 0.3s; 
+}
+
+.like-button:hover .main-body{
+  fill: var(--accent-color);
+  transition: fill 0.3s 0.05s; 
+}
+
+.like-button:active .core {
+  fill: var(--heart-fill);
+  transition: fill 0.3s; 
+}
+
+.like-button:active .main-body {
+  fill: var(--heart-fill);
+  transition: fill 0.3s 0.05s; 
+}
+
+.sparks {
+  opacity: 0%;
+  fill: var(--heart-fill);
+}
+
+.like-icon.is-liked .core {
+  fill: var(--heart-fill);
+  transition: fill 0.3s; 
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--heart-fill);
+  transition: fill 0.3s 0.05s; 
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--heart-fill);
+  transition: fill 0.3s 0.06s; 
+}
+
+.contour {
+  transition: fill 0.1s; 
+}
+
+.like-icon.is-liked .heart {
+  animation-name: like;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-delay: 0.1s;
+  transform-origin: center;
+}
+
+@keyframes like {
+  0% {
+    transform: scaleX(1) scaleY(1) ;
+  }
+  50% {
+    transform: scaleX(1.5) scaleY(1.5) ;
+  }
+  100% {
+    transform: scaleX(1) scaleY(1) ;
+  }
+}
+
+.like-icon.is-liked .sparks {
+  animation-name: sparkss;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+  animation-delay: 0.3s;
+}
+
+@keyframes sparkss {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
+
+
+.button__text {
+  position: relative;
+  z-index: 2;
+  inset: 0;
+  font-family: var(--accent-font);
+  color: var(--button-text-color);
+  font-size: 14px;
+  font-weight: inherit;
+  line-height: 12.6px;
+  mix-blend-mode: difference;
+}
+
+.button {
+  border: 2px solid var(--accent-color);
+  position: relative;
+  inset: 0;
+  transition: box-shadow 0.3s ease;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  background-color: var(--accent-color);
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.button:hover::after {
+  transform: scaleX(1);
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 2px 2px var(--accent-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer {
+  margin: auto;
+}
+
+.footer__button {
+  background-color:  var(--background-color);
+  border: 2px solid var(--accent-color);
+  padding: 15px 19px;
+  display: flex;
+  gap: 3.5px;
+  align-items: center;
+}
+
+.footer__button-text {
+  position: relative;
+  z-index: 2;
+  inset: 0;
+  font-family: var(--accent-font);
+  color: var(--button-text-color);
+  font-size: 14px;
+  font-weight: inherit;
+  line-height: 12.6px;
+  mix-blend-mode: difference;
+}
+
+.floppy {
+  inline-size: 21px;
+  block-size: 21px;
+  position: relative;
+  z-index: 2;
+  inset: 0;
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
+}
+
+.dialog-button {
+  background-color: transparent;
+  font-size: 14px;
+  block-size: 38px;
+  line-height: 12.6px;
+  text-align: center;
+  grid-area: button;
+  text-transform: uppercase;
+}
+
+.dialog-h2 {
+  grid-area: title;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.dialog-button:focus {
+  box-shadow: none;
+}
+
+#dialog-id {
+  color: var(--accent-color);
+  background-color: var(--background-color);
+  inline-size: 357px;
+  block-size: 197px;
+  font-family: var(--accent-font);
+  padding: 30px;
+}
+
+.dialog-block {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+    "floppy title"
+    "button button";
+  row-gap: 30px;
+  column-gap: 30px;
+  align-items: center;
+}
+
+#dialog-id::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+.dialog-floppy {
+  inline-size: 39px;
+  block-size: 39px;
+  grid-area: floppy;
+}
+
+.sea {
+  filter: brightness(200%);
+}
+
+.waterfall {
+  filter: sepia(1) contrast(2) brightness(50%);
+}
+
+.mountains {
+  filter: invert();
+}
+
+.flowers {
+  filter: grayscale(0.4);
+}
+
+.space {
+  filter: hue-rotate(-60deg);
+}
+
+.pond {
+  filter: grayscale(0.6) contrast(30%);
+}
+
+.wave {
+  filter: saturate(158%);
+
+}
+
+.beach {
+  filter: opacity(80%)
+}
+
+@media (width <= 375px) {
+  .header {
+    padding-block-start: 120px;
+  }
+
+  .section__title {
+    margin: 4px 10px 6px;
+  }
+
+  .footer__button {
+    flex-direction: column;
+    gap: 8px;
+  } 
+
+  #dialog-id {
+    inline-size: 341px;
+    padding: 30px 42px;
+  }
+
+  .dialog-button {
+    inline-size: 257px;
+  }
+
+  .floppy {
+    inline-size: 28px;
+    block-size: 28px;
+  }
 }
