@@ -13,14 +13,7 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 
 */
-@keyframes theme-menu__button-disabled {
-  0% {
-    transform: translate(0);
-  }
-  100% {
-    transform: translate(-4px);
-  }
-}
+
 
 .page {
   min-inline-size: 320px;
@@ -42,7 +35,7 @@
 }
 
 .content-section {
-  inline-size: clamp(375px, calc(50% - 40px), 100%);
+  inline-size: clamp(375px, calc(50% - 20px) , 100%);
   margin: 0 auto;
   box-sizing: border-box;
   border: 2px solid var(--accent-color);
@@ -54,8 +47,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-block-end: 25px;
-  padding-block-start: 135px;
+  padding-block-end: 23px;
+  padding-block-start: 136px;
   text-align: left;
   font-weight: 400;
 }
@@ -63,21 +56,26 @@
 .logo {
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);;
   line-height: 65px;
+  text-transform: uppercase;
 }
 
 .title {
+  text-transform: uppercase;
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   line-height: 23px;
-  margin: 20px auto 25px;
+  margin: 20px auto 20px;
 }
 
 .theme-menu__list {
+  margin-inline-start: 18px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 7px;
+  justify-content: space-between;
 }
 
 .theme-menu__button {
+  text-transform: uppercase;
   font-family: inherit;
   font-size: 14px;
   font-weight: inherit;
@@ -86,17 +84,15 @@
   border: none;
   background-color: transparent;
   position: relative;
-  inset: 0;
 }
 
-.theme-menu__button:enabled {
-  transition: color 0.3s ease, opacity 0.3s ease;
+.theme-menu__button {
+  transition: opacity 0.3s ease;
 }
 
 .theme-menu__button:disabled {
   opacity: 60%;
   pointer-events: none;
-  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .theme-menu__button:disabled::before {
@@ -114,7 +110,6 @@
 .theme-menu__button:hover {
   cursor: pointer;
   opacity: 0.6;
-  transition: opacity 0.3s ease;
 }
 
 .theme-menu__button:focus {
@@ -131,11 +126,11 @@
   border-block-end: 2px solid var(--accent-color);
   transform: scaleX(0);
   transform-origin: left;
+  transition: transform 0.3s ease;
 }
 
 .theme-menu__button:focus-visible::after {
   transform: scaleX(1);
-  transition: transform 0.3s ease;
 }
 
 .main {
@@ -148,20 +143,23 @@
   font-variation-settings: 'wght' var(--title-weight);
   line-height: 21.78px;
   font-size: inherit;
-  margin: 3px 10px;
+  margin: 5px 0 5px 10px;
 }
 
 .image {
-  width: 100%;
-  aspect-ratio: 1/1;
+  object-position: center;
+  inline-size: 100%;
   object-fit: cover;
   position: relative;
-  inset: 0;
+  block-size: 100%;
 }
 
 .pic-with-label {
+  aspect-ratio: 1/1;
+  border-block-start: 2px solid var(--accent-color);
+  border-block-end: 2px solid var(--accent-color);
   position: relative;
-  inset: 0;
+  overflow: hidden;
 }
 
 .pic-label {
@@ -198,14 +196,13 @@
 }
 
 .section__content-description {
-  margin-block-start: 2px;
   text-align: left;
 }
 
 .section__button {
   background-color:  transparent;
   block-size: 38px;
-  inline-size: 130px;
+  min-inline-size: 130px;
   border: 2px solid var(--accent-color);
 }
 
@@ -231,7 +228,6 @@
 
 .like-button:focus-visible {
   border-color: var(--accent-color);
-  transition: border 0.3s ease;
 }
 
 .like-icon {
@@ -245,32 +241,32 @@
 
 .core {
   fill: transparent;
-  transition: fill 0.3s 0.03s; 
+  transition: fill 0.3s 0.03s linear; 
 }
 
 .like-button:hover .core{
   fill: var(--accent-color);
-  transition: fill 0.3s; 
+  transition: fill 0.3s linear; 
 }
 
 .main-body{
   fill: transparent;
-  transition: fill 0.3s; 
+  transition: fill 0.3s linear; 
 }
 
 .like-button:hover .main-body{
   fill: var(--accent-color);
-  transition: fill 0.3s 0.05s; 
+  transition: fill 0.3s 0.05s linear; 
 }
 
 .like-button:active .core {
   fill: var(--heart-fill);
-  transition: fill 0.3s; 
+  transition: fill 0.3s linear; 
 }
 
 .like-button:active .main-body {
   fill: var(--heart-fill);
-  transition: fill 0.3s 0.05s; 
+  transition: fill 0.3s 0.05s linear; 
 }
 
 .sparks {
@@ -280,21 +276,21 @@
 
 .like-icon.is-liked .core {
   fill: var(--heart-fill);
-  transition: fill 0.3s; 
+  transition: fill 0.3s linear; 
 }
 
 .like-icon.is-liked .main-body {
   fill: var(--heart-fill);
-  transition: fill 0.3s 0.05s; 
+  transition: fill 0.3s 0.05s linear; 
 }
 
 .like-icon.is-liked .contour {
   fill: var(--heart-fill);
-  transition: fill 0.3s 0.06s; 
+  transition: fill 0.3s 0.06s linear; 
 }
 
 .contour {
-  transition: fill 0.1s; 
+  transition: fill 0.1s linear; 
 }
 
 .like-icon.is-liked .heart {
@@ -306,44 +302,21 @@
   transform-origin: center;
 }
 
-@keyframes like {
-  0% {
-    transform: scaleX(1) scaleY(1) ;
-  }
-  50% {
-    transform: scaleX(1.5) scaleY(1.5) ;
-  }
-  100% {
-    transform: scaleX(1) scaleY(1) ;
-  }
-}
+
 
 .like-icon.is-liked .sparks {
+  animation-direction: alternate;
   animation-name: sparkss;
   animation-duration: 0.3s;
   animation-timing-function: ease;
   animation-delay: 0.3s;
 }
 
-@keyframes sparkss {
-  0% {
-    opacity: 0%;
-  }
-  50% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 0%;
-  }
-}
-
-
-
 .button__text {
   position: relative;
   z-index: 2;
   inset: 0;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), sans-serif;
   color: var(--button-text-color);
   font-size: 14px;
   font-weight: inherit;
@@ -355,7 +328,7 @@
   border: 2px solid var(--accent-color);
   position: relative;
   inset: 0;
-  transition: box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button::after {
@@ -381,7 +354,6 @@
 .button:focus {
   outline: none;
   box-shadow: 2px 2px var(--accent-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .footer {
@@ -401,7 +373,7 @@
   position: relative;
   z-index: 2;
   inset: 0;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), sans-serif;
   color: var(--button-text-color);
   font-size: 14px;
   font-weight: inherit;
@@ -429,7 +401,7 @@
   text-transform: uppercase;
 }
 
-.dialog-h2 {
+.dialog-title {
   grid-area: title;
   font-size: 14px;
   font-weight: 400;
@@ -442,12 +414,16 @@
   box-shadow: none;
 }
 
+.dialog-button:focus-visible {
+  box-shadow: 2px 2px var(--accent-color);
+}
+
 #dialog-id {
   color: var(--accent-color);
   background-color: var(--background-color);
   inline-size: 357px;
-  block-size: 197px;
-  font-family: var(--accent-font);
+  min-block-size: 197px;
+  font-family: var(--accent-font), sans-serif;
   padding: 30px;
 }
 
@@ -473,46 +449,50 @@
   grid-area: floppy;
 }
 
-.sea {
+.filter-brightness {
   filter: brightness(200%);
 }
 
-.waterfall {
+.filter-sepia-contrast-brightness {
   filter: sepia(1) contrast(2) brightness(50%);
 }
 
-.mountains {
-  filter: invert();
+.filter-invert {
+  filter: invert(1);
 }
 
-.flowers {
+.filter-grayscale {
   filter: grayscale(0.4);
 }
 
-.space {
+.filter-hue-rotate {
   filter: hue-rotate(-60deg);
 }
 
-.pond {
+.filter-grayscale-contrast {
   filter: grayscale(0.6) contrast(30%);
 }
 
-.wave {
+.filter-saturate {
   filter: saturate(158%);
 
 }
 
-.beach {
+.filter-opacity {
   filter: opacity(80%)
 }
 
 @media (width <= 375px) {
   .header {
-    padding-block-start: 120px;
+    padding-block-start: 112px;
   }
 
   .section__title {
     margin: 4px 10px 6px;
+  }
+
+  .title {
+    margin: 8px auto 15px;
   }
 
   .footer__button {
@@ -522,7 +502,7 @@
 
   #dialog-id {
     inline-size: 341px;
-    block-size: 220px;
+    min-block-size: 220px;
     padding: 30px 42px;
   }
 
