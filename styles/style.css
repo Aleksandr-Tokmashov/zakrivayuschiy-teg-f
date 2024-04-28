@@ -31,7 +31,7 @@
   font-size: 18px;
   text-align: left;
   line-height: 21px;
-  margin: 100px 0;
+  margin: 100px 0 103px;
 }
 
 .content-section {
@@ -86,10 +86,6 @@
   position: relative;
 }
 
-.theme-menu__button {
-  transition: opacity 0.3s ease;
-}
-
 .theme-menu__button:disabled {
   opacity: 60%;
   pointer-events: none;
@@ -100,11 +96,6 @@
   position: absolute;
   left: -11px;
   top: 0;
-  animation-name: theme-menu__button-disabled;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
 }
 
 .theme-menu__button:hover {
@@ -126,7 +117,6 @@
   border-block-end: 2px solid var(--accent-color);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s ease;
 }
 
 .theme-menu__button:focus-visible::after {
@@ -195,10 +185,6 @@
   margin: 25px;
 }
 
-.section__content-description {
-  text-align: left;
-}
-
 .section__button {
   background-color:  transparent;
   block-size: 38px;
@@ -219,7 +205,6 @@
   block-size: 38px;
   inline-size: 39px;
   background-color: transparent;
-  transition: border 0.3s ease;
 }
 
 .like-button:focus {
@@ -241,32 +226,26 @@
 
 .core {
   fill: transparent;
-  transition: fill 0.3s 0.03s linear; 
 }
 
 .like-button:hover .core{
   fill: var(--accent-color);
-  transition: fill 0.3s linear; 
 }
 
 .main-body{
   fill: transparent;
-  transition: fill 0.3s linear; 
 }
 
 .like-button:hover .main-body{
   fill: var(--accent-color);
-  transition: fill 0.3s 0.05s linear; 
 }
 
 .like-button:active .core {
   fill: var(--heart-fill);
-  transition: fill 0.3s linear; 
 }
 
 .like-button:active .main-body {
   fill: var(--heart-fill);
-  transition: fill 0.3s 0.05s linear; 
 }
 
 .sparks {
@@ -275,41 +254,20 @@
 }
 
 .like-icon.is-liked .core {
-  fill: var(--heart-fill);
-  transition: fill 0.3s linear; 
+  fill: var(--heart-fill); 
 }
 
 .like-icon.is-liked .main-body {
   fill: var(--heart-fill);
-  transition: fill 0.3s 0.05s linear; 
 }
 
 .like-icon.is-liked .contour {
   fill: var(--heart-fill);
-  transition: fill 0.3s 0.06s linear; 
 }
 
-.contour {
-  transition: fill 0.1s linear; 
-}
 
 .like-icon.is-liked .heart {
-  animation-name: like;
-  animation-duration: 0.3s;
-  animation-timing-function: ease;
-  animation-iteration-count: 1;
-  animation-delay: 0.1s;
   transform-origin: center;
-}
-
-
-
-.like-icon.is-liked .sparks {
-  animation-direction: alternate;
-  animation-name: sparkss;
-  animation-duration: 0.3s;
-  animation-timing-function: ease;
-  animation-delay: 0.3s;
 }
 
 .button__text {
@@ -328,7 +286,6 @@
   border: 2px solid var(--accent-color);
   position: relative;
   inset: 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button::after {
@@ -338,7 +295,6 @@
   inline-size: 100%;
   block-size: 100%;
   background-color: var(--accent-color);
-  transition: transform 0.5s ease-in-out;
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -422,7 +378,6 @@
   color: var(--accent-color);
   background-color: var(--background-color);
   inline-size: 357px;
-  min-block-size: 197px;
   font-family: var(--accent-font), sans-serif;
   padding: 30px;
 }
@@ -502,7 +457,6 @@
 
   #dialog-id {
     inline-size: 341px;
-    min-block-size: 220px;
     padding: 30px 42px;
   }
 
@@ -513,5 +467,9 @@
   .floppy {
     inline-size: 28px;
     block-size: 28px;
+  }
+
+  .page {
+    margin: 100px 0 100px;
   }
 }
